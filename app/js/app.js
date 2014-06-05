@@ -1,8 +1,8 @@
 'use strict';
 
-
 // Declare app level module which depends on filters, and services
 var myApp = angular.module('myApp', [
+  'btford.socket-io',
   'ngRoute',
   'ngCookies',
   'myAppAnimations',
@@ -11,6 +11,32 @@ var myApp = angular.module('myApp', [
   'myApp.directives',
   'myApp.controllers'
 ]);
+
+myApp.factory('socket', function ($rootScope) {
+    var socket = io.connect();
+    return {
+        test : function () {
+            return 1;
+        },
+        on: function (eventName, callback) {
+            socket.on(eventName, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    callback.apply(socket, args);
+                });
+            });
+        },
+        emit: function (eventName, data, callback) {
+            socket.emit(eventName, data, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    if (callback) {
+                        callback.apply(socket, args);
+                    }
+                });
+            })
+        }
+    }});
 
 myApp.config(['$routeProvider',
     function($routeProvider) {

@@ -158,6 +158,7 @@ a.back {
     -khtml-border-radius: 10px;    /* Konqueror */
     -moz-border-radius: 10px; /* Firefox */
     border-radius: 10px;
+    line-height: 1em;
 }
 
 .menu {

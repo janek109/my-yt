@@ -6,8 +6,14 @@ var myservice = "http://myyt.v.l/";
 
 var controlers = angular.module('myApp.controllers', []);
 
-controlers.controller('ListOfFilms', ['$scope', '$http',
-    function($scope, $http) {
+controlers.controller('ListOfFilms', ['$scope', '$http', 'socket',
+    function($scope, $http, socket) {
+        socket.on('onChangedFilms', function(data) {
+            $http.get(myservice+'index/list').success(function(data) {
+                $scope.films = data;
+            });
+        });
+
         $http.get(myservice+'index/list').success(function(data) {
             $scope.films = data;
         });
@@ -19,6 +25,7 @@ controlers.controller('ListOfFilms', ['$scope', '$http',
                 $scope.status = data.status;
                 $http.get(myservice+'index/list').success(function(data) {
                     $scope.films = data;
+                    socket.emit('ChangedFilms', data);
                 });
             });
         };
@@ -32,8 +39,8 @@ controlers.controller('Film', ['$scope', '$routeParams', '$http',
         });
     }]);
 
-controlers.controller('AddFilm', ['$scope', '$routeParams', '$http', '$location',
-    function($scope, $routeParams, $http, $location) {
+controlers.controller('AddFilm', ['$scope', '$routeParams', '$http', '$location', 'socket',
+    function($scope, $routeParams, $http, $location, socket) {
         $scope.addFilm = function(film) {
             if(angular.isUndefined(film)
                 || angular.isUndefined(film.name)
@@ -48,6 +55,7 @@ controlers.controller('AddFilm', ['$scope', '$routeParams', '$http', '$location'
                 $http.get(myservice+'index/add?name=' + film.name + '&yt_id= ' + film.yt_id + ' &publish=' + film.publish + '&description=' + film.description).success(function(data) {
                     if (data.status == 'ok')
                     {
+                        socket.emit('ChangedFilms', film);
                         $location.path("/listoffilms");
                     }
                     else
@@ -60,8 +68,8 @@ controlers.controller('AddFilm', ['$scope', '$routeParams', '$http', '$location'
         }
     }]);
 
-controlers.controller('EditFilm', ['$scope', '$routeParams', '$http', '$location',
-    function($scope, $routeParams, $http, $location) {
+controlers.controller('EditFilm', ['$scope', '$routeParams', '$http', '$location', 'socket',
+    function($scope, $routeParams, $http, $location, socket) {
         $http.get(myservice+'index/show/?id=' + $routeParams.id).success(function(data) {
             $scope.film = data;
         });
@@ -81,6 +89,8 @@ controlers.controller('EditFilm', ['$scope', '$routeParams', '$http', '$location
                 $http.get(myservice+'index/edit?id=' + film.id + '&name=' + film.name + '&yt_id= ' + film.yt_id + ' &publish=' + film.publish + '&description=' + film.description).success(function(data) {
                     if (data.status == 'ok')
                     {
+                        console.log(socket);
+                        socket.emit('ChangedFilms', film);
                         $location.path("/listoffilms");
                     }
                     else
