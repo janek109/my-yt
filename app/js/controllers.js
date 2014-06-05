@@ -2,24 +2,94 @@
 
 /* Controllers */
 
+var myservice = "http://myyt.v.l/";
+
 var controlers = angular.module('myApp.controllers', []);
 
 controlers.controller('ListOfFilms', ['$scope', '$http',
     function($scope, $http) {
-        $http.get('json/films.json').success(function(data) {
+        $http.get(myservice+'index/list').success(function(data) {
             $scope.films = data;
         });
 
         $scope.orderProp = 'name';
+
+        $scope.deleteFilm = function(id) {
+            $http.get(myservice+'index/delete?id='+ id).success(function(data) {
+                $scope.status = data.status;
+                $http.get(myservice+'index/list').success(function(data) {
+                    $scope.films = data;
+                });
+            });
+        };
     }]);
 
 controlers.controller('Film', ['$scope', '$routeParams', '$http',
     function($scope, $routeParams, $http) {
-        $http.get('json/films/' + $routeParams.id + '.json').success(function(data) {
+        $http.get(myservice+'index/show/?id=' + $routeParams.id).success(function(data) {
             $scope.film = data;
             $scope.code = data.yt_id;
         });
+    }]);
 
+controlers.controller('AddFilm', ['$scope', '$routeParams', '$http', '$location',
+    function($scope, $routeParams, $http, $location) {
+        $scope.addFilm = function(film) {
+            if(angular.isUndefined(film)
+                || angular.isUndefined(film.name)
+                || angular.isUndefined(film.yt_id)
+                || angular.isUndefined(film.publish)
+                || angular.isUndefined(film.description))
+            {
+                $scope.status = "film not added";
+            }
+            else
+            {
+                $http.get(myservice+'index/add?name=' + film.name + '&yt_id= ' + film.yt_id + ' &publish=' + film.publish + '&description=' + film.description).success(function(data) {
+                    if (data.status == 'ok')
+                    {
+                        $location.path("/listoffilms");
+                    }
+                    else
+                    {
+                        $scope.status = "film not added";
+                    }
+                });
+            }
+
+        }
+    }]);
+
+controlers.controller('EditFilm', ['$scope', '$routeParams', '$http', '$location',
+    function($scope, $routeParams, $http, $location) {
+        $http.get(myservice+'index/show/?id=' + $routeParams.id).success(function(data) {
+            $scope.film = data;
+        });
+
+        $scope.editFilm = function(film) {
+            if(angular.isUndefined(film)
+                || angular.isUndefined(film.id)
+                || angular.isUndefined(film.name)
+                || angular.isUndefined(film.yt_id)
+                || angular.isUndefined(film.publish)
+                || angular.isUndefined(film.description))
+            {
+                $scope.status = "film not edited";
+            }
+            else
+            {
+                $http.get(myservice+'index/edit?id=' + film.id + '&name=' + film.name + '&yt_id= ' + film.yt_id + ' &publish=' + film.publish + '&description=' + film.description).success(function(data) {
+                    if (data.status == 'ok')
+                    {
+                        $location.path("/listoffilms");
+                    }
+                    else
+                    {
+                        $scope.status = "film not edited";
+                    }
+                });
+            }
+        }
     }]);
 
 controlers.directive('myYoutube', function($sce) {

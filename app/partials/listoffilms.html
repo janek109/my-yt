@@ -15,6 +15,9 @@
             </select>
 
         </div>
+        <div class="menu">
+            <a class="button" href="#/addfilm">add</a>
+        </div>
         <div class="col-md-10">
             <!--Body content-->
 
@@ -23,9 +26,13 @@
                     <div>
                         <a href="#/film/{{film.id}}" class="thumb"><img ng-src="http://img.youtube.com/vi/{{film.yt_id}}/1.jpg"></a>
                     </div>
+                    <div class="filmmenu">
+                        <span class="button" ng-click="deleteFilm(film.id)">remove</span>
+                        <a href="#/editfilm/{{film.id}}" class="button">edit</a>
+                    </div>
                     <div class="description">
                         <h2><a href="#/film/{{film.id}}">{{film.name}}</a></h2>
-                        <span>Data publikacji: {{film.publish}}</span>
+                        <span>Date of publication: {{film.publish}}</span>
                     </div>
 
                     <!--

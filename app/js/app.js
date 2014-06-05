@@ -23,6 +23,14 @@ myApp.config(['$routeProvider',
                 templateUrl: 'partials/film.html',
                 controller: 'Film'
             }).
+            when('/addfilm', {
+                templateUrl: 'partials/addfilm.html',
+                controller: 'AddFilm'
+            }).
+            when('/editfilm/:id', {
+                templateUrl: 'partials/editfilm.html',
+                controller: 'EditFilm'
+            }).
             otherwise({
                 redirectTo: '/listoffilms'
             });

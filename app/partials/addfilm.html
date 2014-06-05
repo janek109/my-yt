@@ -1,0 +1,18 @@
+<div class="addfilm">
+    <a class="back" href="#/listoffilms">powrót</a>
+
+    <h2>Add Film</h2>
+
+    <div ng-controller="AddFilm">
+        <span>{{status}}</span>
+        <form validate>
+            <input type="hidden" ng-model="film.id" required />
+            <p>Name: <input type="text" ng-model="film.name" required /></p>
+            <p>Youtube id: <input type="text" ng-model="film.yt_id" required /></p>
+            <p>When it publish: <input type="text" ng-model="film.publish" required /></p>
+            <p>Description: <input type="text" ng-model="film.description" required></p>
+
+            <span class="button" ng-click="addFilm(film)">save</span>
+        </form>
+    </div>
+</div>

@@ -19,7 +19,7 @@ h2 {
     margin-top: 0px;
 }
 
-.film h2 {
+.editfilm h2, .addfilm  h2, .film h2 {
     margin-top: 20px;
 }
 
@@ -116,12 +116,16 @@ h1 {
     border-bottom: 1px solid gray;
 }
 
-.description {
+.filmmenu, .description {
     padding-left:  130px;
 }
 
 .description a {
     color: #fff;
+}
+
+.filmmenu {
+    margin-bottom: 5px;
 }
 
 .view-container {
@@ -142,4 +146,20 @@ a.back {
     -khtml-border-radius: 10px;    /* Konqueror */
     -moz-border-radius: 10px; /* Firefox */
     border-radius: 10px;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #105cb6;
+    color: #ffffff;
+    padding: 7px 9px;
+    margin: 50px 0;
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px;    /* Konqueror */
+    -moz-border-radius: 10px; /* Firefox */
+    border-radius: 10px;
+}
+
+.menu {
+    margin: 20px 0;
 }
