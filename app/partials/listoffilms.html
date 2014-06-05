@@ -19,10 +19,14 @@
             <!--Body content-->
 
             <ul class="films">
-                <li ng-repeat="film in films | filter:query | orderBy:orderProp" class="thumbnail">
-                    <a href="#/film/{{film.id}}" class="thumb"><img ng-src="http://img.youtube.com/vi/{{film.yt_id}}/1.jpg"></a>
-                    <a href="#/film/{{film.id}}">{{film.name}}</a> |
-                    <span>Data publikacji: {{film.publish}}</span>
+                <li ng-repeat="film in films | filter:query | orderBy:orderProp" class="thumbnail film-listing">
+                    <div>
+                        <a href="#/film/{{film.id}}" class="thumb"><img ng-src="http://img.youtube.com/vi/{{film.yt_id}}/1.jpg"></a>
+                    </div>
+                    <div class="description">
+                        <h2><a href="#/film/{{film.id}}">{{film.name}}</a></h2>
+                        <span>Data publikacji: {{film.publish}}</span>
+                    </div>
 
                     <!--
                     http://img.youtube.com/vi/ID/0.jpg // 480x360

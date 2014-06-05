@@ -6,7 +6,7 @@ var controlers = angular.module('myApp.controllers', []);
 
 controlers.controller('ListOfFilms', ['$scope', '$http',
     function($scope, $http) {
-        $http.get('json/myfilms.json').success(function(data) {
+        $http.get('json/films.json').success(function(data) {
             $scope.films = data;
         });
 
@@ -31,7 +31,7 @@ controlers.directive('myYoutube', function($sce) {
         link: function (scope) {
             scope.$watch('code', function (newVal) {
                 if (newVal) {
-                    scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal + "?autoplay=1");
+                    scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal + "?autoplay=0");
                 }
             });
         }

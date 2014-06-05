@@ -5,6 +5,7 @@
 var myApp = angular.module('myApp', [
   'ngRoute',
   'ngCookies',
+  'myAppAnimations',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',

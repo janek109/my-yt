@@ -1,30 +1,145 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+/* app css stylesheet */
+
+body {
 }
 
-.menu:before {
-  content: "[";
+p {
+    font-size: 1.1em;
 }
 
-.menu:after {
-  content: "]";
+span {
+    font-size: 0.9em;
 }
 
-.menu > li {
-  display: inline;
+h2 {
+    font-size: 1.3em !important;
+    padding-top: 0px;
+    margin-top: 0px;
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+.film h2 {
+    margin-top: 20px;
 }
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+.film-images {
+    background-color: white;
+    width: 450px;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.films {
+    list-style: none;
+}
+
+.thumb {
+    float: left;
+    margin: -0.5em 1em 1.5em 0;
+    padding-bottom: 1em;
+    height: 100px;
+    width: 100px;
+}
+
+.films li {
+    clear: both;
+    height: 115px;
+    padding-top: 15px;
+}
+
+/** Detail View **/
+img.film {
+    float: left;
+    margin-right: 3em;
+    margin-bottom: 2em;
+    background-color: white;
+    padding: 2em;
+    height: 400px;
+    width: 400px;
+    display: none;
+}
+
+img.film:first-child {
+    display: block;
+}
+
+
+ul.film-thumbs {
+    margin: 0;
+    list-style: none;
+}
+
+ul.film-thumbs li {
+    border: 1px solid black;
+    display: inline-block;
+    margin: 1em;
+    background-color: white;
+}
+
+ul.film-thumbs img {
+    height: 100px;
+    width: 100px;
+    padding: 1em;
+}
+
+ul.film-thumbs img:hover {
+    cursor: pointer;
+}
+
+
+ul.specs {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.specs > li{
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}
+
+ul.specs > li > span{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+ul.specs dt {
+    font-weight: bold;
+}
+
+h1 {
+    border-bottom: 1px solid gray;
+}
+
+.description {
+    padding-left:  130px;
+}
+
+.description a {
+    color: #fff;
+}
+
+.view-container {
+    padding: 40px;
+    background-color: #9EB;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.back {
+    text-decoration: none;
+    background-color: #105cb6;
+    color: #ffffff;
+    padding: 5px 7px;
+    margin: 50px 0;
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px;    /* Konqueror */
+    -moz-border-radius: 10px; /* Firefox */
+    border-radius: 10px;
 }
