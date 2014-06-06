@@ -1,3 +1,22 @@
+#little help
+
+http://www.creativebloq.com/javascript/angularjs-collaboration-board-socketio-2132885
+https://docs.angularjs.org/guide/forms
+https://developers.google.com/youtube/player_parameters?hl=pl
+https://github.com/angular/angular-seed
+https://code.angularjs.org/1.2.16/docs/tutorial/step_00
+
+#Little about
+Aplikacja do przeglądania kolekcji piosenek z youtube. Baza danych może być w postaci oddziejnych plików json. Powinna być możliwość wyświetlenia materiału bezpośrednio na stronie.
+Widoki:
+Możliwość wyświetlenia listy filmików
+Możliwość wyświetlenia dokładniejszego opisu
+Możliwość filtrowania listy
+Sortowanie według wykonawcy albo tytułu
+CRUD do tej listy
+Automatyczne odświeżanie listy
+W momencie zmiany zawartości listy, powinna ona się odświeżyć we wszystkich otwartych okienkach
+
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
@@ -262,17 +281,6 @@ tests when you push to GitHub.
 
 You will need to enable the integration between Travis and GitHub. See the Travis website for more
 instruction on how to do this.
-
-### CloudBees
-
-CloudBees have provided a CI/deployment setup:
-
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">
-<img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
-
-If you run this, you will get a cloned version of this repo to start working on in a private git repo,
-along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
-
 
 ## Contact
 
