@@ -6,6 +6,9 @@ https://developers.google.com/youtube/player_parameters?hl=pl
 https://github.com/angular/angular-seed
 https://code.angularjs.org/1.2.16/docs/tutorial/step_00
 
+#run
+node app.js
+
 #Little about
 Aplikacja do przeglądania kolekcji piosenek z youtube. Baza danych może być w postaci oddziejnych plików json. Powinna być możliwość wyświetlenia materiału bezpośrednio na stronie.
 Widoki:
